@@ -121,7 +121,7 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
 [data-theme="light"] .nom-synnova { color: #ff6dc7; }
 [data-theme="light"] .hero-citation { color: rgb(255, 255, 255); }
 [data-theme="light"] .bouton-discret { color: rgb(253, 251, 251); border-color: rgba(26,26,26,0.18); }
-[data-theme="light"] .bouton-discret:hover { color: #ffafcf; border-color: #C2185B; }
+[data-theme="light"] .bouton-discret:hover { color: #faaad2; border-color: #C2185B; }
 [data-theme="light"] .hero-image-decor { border-color: rgba(194,24,91,0.12); }
 [data-theme="light"] .scroll-fleche { border-color: rgba(255, 255, 255, 0.93); }
 
@@ -249,7 +249,7 @@ border-color 0.5s ease, box-shadow 0.5s ease;
   box-shadow: 0 6px 22px rgba(194, 24, 91, 0.3);
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
-.bouton-rose:hover { background-color: #a8154f; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(194, 24, 91, 0.4); }
+.bouton-rose:hover { background-color: #b8142f; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(231, 75, 138, 0.6); }
 
 .bouton-grand { padding: 16px 46px; font-size: 0.93rem; }
 
@@ -263,7 +263,10 @@ border-color 0.5s ease, box-shadow 0.5s ease;
   color: rgb(240, 236, 232);
   transition: border-color 0.3s ease, color 0.3s ease;
 }
-
+.bouton-discret:hover{
+  transform: translateY(-2px);
+  color: #ff55a4;
+}
 
 /* ── 7. NAVBAR ────────────────────────────────── */
 
@@ -386,7 +389,7 @@ border-color 0.5s ease, box-shadow 0.5s ease;
 
 .nom-synnova {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.70rem, 3.0vw, 2.0rem);
+  font-size: clamp(1.45rem, 2.5vw, 1.5rem);
   font-weight: 700;
   line-height: 1.25;
   min-height: 4rem;

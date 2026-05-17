@@ -469,3 +469,56 @@ if (formulaire) {
     }
   });
 }
+
+/* ════════════════════════════════════════════════
+   CONTACT — ENVOI EMAILJS
+════════════════════════════════════════════════ */
+
+(function() {
+  const form = document.getElementById('formulaireContact');
+  if (!form) return;
+
+  const SERVICE_ID = 'service_8lceohj';
+  const TEMPLATE_ID = 'template_7ozgy7g';
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nom = document.getElementById('nom')?.value.trim();
+    const email = document.getElementById('email')?.value.trim();
+    const sujetSelect = document.getElementById('sujet');
+    const sujet = sujetSelect?.options[sujetSelect.selectedIndex]?.text || '';
+    const message = document.getElementById('message')?.value.trim();
+
+    if (!nom || !email || !sujet || !message) {
+      alert('Veuillez remplir tous les champs.');
+      return;
+    }
+
+    const bouton = document.getElementById('boutonEnvoyer');
+    const originalText = bouton?.querySelector('.bouton-texte')?.innerHTML || 'Envoyer';
+    if (bouton) {
+      bouton.disabled = true;
+      const span = bouton.querySelector('.bouton-texte');
+      if (span) span.innerHTML = 'Envoi en cours...';
+    }
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+      from_name: nom,
+      from_email: email,
+      subject: sujet,
+      message: message,
+      to_name: 'Synnova'
+    }).then(() => {
+      window.location.href = 'confirmation.html?success=1';
+    }).catch((error) => {
+      console.error(error);
+      if (bouton) {
+        bouton.disabled = false;
+        const span = bouton.querySelector('.bouton-texte');
+        if (span) span.innerHTML = originalText;
+      }
+      alert('❌ Erreur lors de l\'envoi. Veuillez réessayer.');
+    });
+  });
+})();
