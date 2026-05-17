@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Synnova TOCLOE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/portfolio.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-interieur">
+      <a href="index.html" class="navbar-logo">Synnova<span>.</span></a>
+      <ul class="navbar-liens">
+        <li><a href="index.html" class="lien-nav">Accueil</a></li>
+        <li><a href="apropos.html" class="lien-nav">À propos</a></li>
+        <li><a href="univers.html" class="lien-nav">Univers</a></li>
+        <li><a href="portfolio.html" class="lien-nav actif">Portfolio</a></li>
+        <li><a href="contact.html" class="lien-nav">Contact</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="bouton-theme" id="boutonTheme" aria-label="Thème">
+          <i class="fa-solid fa-sun" id="iconeTheme"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="menu-mobile" id="menuMobile">
+      <ul>
+        <li><a href="index.html" class="lien-mobile">Accueil</a></li>
+        <li><a href="apropos.html" class="lien-mobile">À propos</a></li>
+        <li><a href="univers.html" class="lien-mobile">Univers</a></li>
+        <li><a href="portfolio.html" class="lien-mobile">Portfolio</a></li>
+        <li><a href="contact.html" class="lien-mobile">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-portfolio">
+    <div class="hero-fond">
+      <img src="img/image fond/Design sans titre (4).png" alt="Portfolio" />
+      <div class="hero-voile"></div>
+    </div>
+    <div class="hero-texte reveal">
+      <h1 class="hero-titre">Mes <em>actualités</em></h1>
+      <p class="hero-sous-titre">Moments, projets et expériences qui façonnent mon parcours.</p>
+    </div>
+  </section>
+
+  <!-- FILTRES -->
+  <section class="section-filtres reveal">
+    <div class="filtres-conteneur">
+      <button class="filtre actif" data-filtre="tous">Tous</button>
+      <button class="filtre" data-filtre="evenements">Événements</button>
+      <button class="filtre" data-filtre="cinema">Cinéma</button>
+      <button class="filtre" data-filtre="communication">Communication</button>
+      <button class="filtre" data-filtre="entrepreneuriat">Entrepreneuriat</button>
+    </div>
+  </section>
+
+  <!-- ZONE DYNAMIQUE -->
+  <section class="section-galerie-dynamique">
+
+    <!-- TOUS -->
+    <div class="zone-filtre actif" data-zone="tous">
+      <div class="layout-principal">
+        <div class="layout-grande"><img src="images/photo-1.jpg" alt="" /></div>
+        <div class="layout-petites-col">
+          <div class="layout-petite"><img src="images/photo-2.jpg" alt="" /></div>
+          <div class="layout-petite"><img src="images/photo-3.jpg" alt="" /></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉVÉNEMENTS -->
+    <div class="zone-filtre" data-zone="evenements">
+      <div class="layout-principal">
+        <div class="layout-grande"><img src="images/photo-1.jpg" alt="" /></div>
+        <div class="layout-petites-col">
+          <div class="layout-petite avec-texte">
+            <img src="images/photo-2.jpg" alt="" />
+            <div class="layout-texte-image">
+              <span class="layout-label">Festival des Arts</span>
+              <p>Animatrice live sur la grande scène du Festival International des Arts du Bénin.</p>
+            </div>
+          </div>
+          <div class="layout-petite avec-texte">
+            <img src="images/photo-3.jpg" alt="" />
+            <div class="layout-texte-image">
+              <span class="layout-label">UReport Grand-Popo</span>
+              <p>Coordination et animation de sessions participatives pour la jeunesse béninoise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CINÉMA -->
+    <div class="zone-filtre" data-zone="cinema">
+      <div class="layout-principal layout-inverse">
+        <div class="layout-petites-col">
+          <div class="layout-petite avec-texte">
+            <img src="images/photo-3.jpg" alt="" />
+            <div class="layout-texte-image">
+              <span class="layout-label">Actrice</span>
+              <p>Rôle dans une production cinématographique béninoise indépendante.</p>
+            </div>
+          </div>
+          <div class="layout-petite avec-texte">
+            <img src="images/photo-4.jpg" alt="" />
+            <div class="layout-texte-image">
+              <span class="layout-label">Régie plateau</span>
+              <p>Régisseuse plateau lors du Festival International des Arts du Bénin.</p>
+            </div>
+          </div>
+        </div>
+        <div class="layout-grande"><img src="images/photo-2.jpg" alt="" /></div>
+      </div>
+    </div>
+
+    <!-- COMMUNICATION -->
+    <div class="zone-filtre" data-zone="communication">
+      <div class="layout-trois-cols">
+        <div class="layout-col-image"><img src="images/photo-1.jpg" alt="" /></div>
+        <div class="layout-col-image"><img src="images/photo-3.jpg" alt="" /></div>
+        <div class="layout-col-image"><img src="images/photo-5.jpg" alt="" /></div>
+      </div>
+      <div class="layout-texte-bas">
+        <h3 class="layout-texte-bas-titre">Communication digitale & stratégie</h3>
+        <p class="layout-texte-bas-corps">J'accompagne des projets locaux et régionaux dans leur visibilité digitale — création de contenu, gestion de communauté et campagnes ciblées.</p>
+      </div>
+    </div>
+
+    <!-- ENTREPRENEURIAT -->
+    <div class="zone-filtre" data-zone="entrepreneuriat">
+      <div class="layout-vertical">
+        <div class="layout-grande-haute"><img src="images/photo-4.jpg" alt="" /></div>
+        <div class="layout-trois-petites">
+          <div class="layout-petite-basse"><img src="images/photo-1.jpg" alt="" /></div>
+          <div class="layout-petite-basse"><img src="images/photo-2.jpg" alt="" /></div>
+          <div class="layout-petite-basse"><img src="images/photo-5.jpg" alt="" /></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- GRANDS ÉVÉNEMENTS -->
+  <section class="section-grands-evenements">
+    <div class="section-entete reveal">
+      <span class="etiquette">Parcours</span>
+      <h2 class="section-titre">Mes plus grands événements</h2>
+      <p class="section-sous-titre">Quelques moments marquants de mon parcours.</p>
+    </div>
+    <div class="evenements-grille">
+      <div class="evenement-item reveal">
+        <img src="images/photo-1.jpg" alt="Festival" />
+        <div class="evenement-voile"></div>
+        <div class="evenement-texte">
+          <span class="evenement-label">Festival</span>
+          <h3 class="evenement-titre">Festival International des Arts du Bénin</h3>
+        </div>
+      </div>
+      <div class="evenement-item reveal">
+        <img src="img/image synnova/engagement.webp" alt="UReport" />
+        <div class="evenement-voile"></div>
+        <div class="evenement-texte">
+          <span class="evenement-label">Engagement</span>
+          <h3 class="evenement-titre">UReport Grand-Popo</h3>
+        </div>
+      </div>
+      <div class="evenement-item reveal">
+        <img src="images/photo-3.jpg" alt="UCAE" />
+        <div class="evenement-voile"></div>
+        <div class="evenement-texte">
+          <span class="evenement-label">Formation</span>
+          <h3 class="evenement-titre">UCAE Formation</h3>
+        </div>
+      </div>
+      <div class="evenement-item reveal">
+        <img src="images/photo-4.jpg" alt="Mairie" />
+        <div class="evenement-voile"></div>
+        <div class="evenement-texte">
+          <span class="evenement-label">Institution</span>
+          <h3 class="evenement-titre">Mairie des Jeunes Grand-Popo</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTUALITÉS -->
+  <section class="section-actualites">
+    <div class="section-entete reveal">
+      <span class="etiquette">En ce moment</span>
+      <h2 class="section-titre">Mes actualités</h2>
+      <p class="section-sous-titre">Des projets qui continuent de faire évoluer mon univers.</p>
+    </div>
+    <div class="actualites-grille reveal">
+      <div class="actu-item">
+        <img src="img/synno moment/Aucune œuvre utile.jpg" alt="Projet cinéma" />
+        <div class="actu-voile"></div>
+        <div class="actu-texte">
+          <span class="actu-label">Cinéma</span>
+          <h3 class="actu-titre">Nouveau projet cinéma</h3>
+        </div>
+      </div>
+      <div class="actu-item">
+        <img src="img/image synnova/4-6.jpg" alt="Emballages" />
+        <div class="actu-voile"></div>
+        <div class="actu-texte">
+          <span class="actu-label">Entrepreneuriat</span>
+          <h3 class="actu-titre">Emballages biodégradables</h3>
+        </div>
+      </div>
+      <div class="actu-item">
+        <img src="img/synno moment/BBq.webp" alt="Festival" />
+        <div class="actu-voile"></div>
+        <div class="actu-texte">
+          <span class="actu-label">Animation</span>
+          <h3 class="actu-titre">Animation festival à venir</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="section-temoignages">
+    <div class="section-entete reveal">
+      <span class="etiquette">Retours</span>
+      <h2 class="section-titre">Ils parlent de moi</h2>
+      <p class="section-sous-titre">Des expériences humaines et professionnelles partagées.</p>
+    </div>
+    <div class="temoignages-grille">
+      <div class="temoignage-carte reveal">
+        <div class="temoignage-guillemet"><i class="fa-solid fa-quote-left"></i></div>
+        <p class="temoignage-texte">"Synnova a une présence scénique rare. Elle a captivé tout le public."</p>
+        <div class="temoignage-auteur">
+          <div class="auteur-point"></div>
+          <div>
+            <span class="auteur-nom">Partenaire du Festival des Arts</span>
+            <span class="auteur-role">Festival International — Bénin</span>
+          </div>
+        </div>
+      </div>
+      <div class="temoignage-carte reveal">
+        <div class="temoignage-guillemet"><i class="fa-solid fa-quote-left"></i></div>
+        <p class="temoignage-texte">"Son énergie sur scène est communicative. Une vraie professionnelle."</p>
+        <div class="temoignage-auteur">
+          <div class="auteur-point"></div>
+          <div>
+            <span class="auteur-nom">Organisateur d'événements</span>
+            <span class="auteur-role">Grand-Popo, Bénin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-principal">
+    <div class="footer-interieur">
+      <div class="footer-col footer-col-marque">
+        <a href="index.html" class="footer-logo">Synnova<span>.</span></a>
+        <p class="footer-slogan">Une femme en chemin, portée par la création, la parole et l'engagement.</p>
+        <div class="footer-reseaux">
+          <a href="https://facebook.com/synnovalumiere" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://tiktok.com/@_synnova" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://instagram.com/_synnova" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-titre-col">Navigation</h4>
+        <ul class="footer-liste">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="univers.html">Univers</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-titre-col">Univers</h4>
+        <ul class="footer-liste">
+          <li><a href="univers.html">Animation</a></li>
+          <li><a href="univers.html">Communication</a></li>
+          <li><a href="univers.html">Cinéma</a></li>
+          <li><a href="univers.html">Entrepreneuriat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-titre-col">Contact</h4>
+        <ul class="footer-liste">
+          <li><a href="mailto:contact@synnova.bj"><i class="fa-solid fa-envelope"></i> contact@synnova.bj</a></li>
+          <li><span class="footer-lieu"><i class="fa-solid fa-location-dot"></i> Bénin, Afrique de l'Ouest</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; 2025 Synnova Belvine Kybarance TOCLOE. Tous droits réservés.</p>
+      <p>Fait avec <i class="fa-solid fa-heart"></i> au Bénin</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

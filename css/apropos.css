@@ -13,7 +13,7 @@ html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #33011e;
+  background-color: #85135331;
   color: #f0ece8;
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
@@ -28,9 +28,9 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 [data-theme="light"] body { background-color: #FAFAFA; color: #2a2a2a; }
 
-[data-theme="light"] .navbar { background-color: rgba(245, 91, 181, 0.78); border-bottom-color: rgba(194,24,91,0.07); }
-[data-theme="light"] .navbar-logo { color: #1a1a1a; }
-[data-theme="light"] .lien-nav { color: rgba(26,26,26,0.6); }
+[data-theme="light"] .navbar { background-color: rgba(250,250,250,0.96); border-bottom-color: rgba(194,24,91,0.07); }
+[data-theme="light"] .navbar-logo { color: #070707; }
+[data-theme="light"] .lien-nav { color: rgba(2, 2, 2, 0.84); }
 [data-theme="light"] .lien-nav:hover,
 [data-theme="light"] .lien-nav.actif { color: #C2185B; }
 [data-theme="light"] .bouton-theme { background-color: rgba(194,24,91,0.07); color: #C2185B; }
@@ -154,8 +154,7 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  background-color: rgba(73, 25, 61, 0.56);
-  border-bottom: 1px solid rgba(194, 24, 91, 0.12);
+  background-color: rgba(20,12,8,0.95); border-bottom: 1px solid rgba(194,24,91,0.12);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   transition: box-shadow 0.3s ease, background-color 0.5s ease;
@@ -182,7 +181,7 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
 }
 .navbar-logo span { color: #C2185B; }
 
-.navbar-liens { display: flex; align-items: center; gap: 36px; }
+.navbar-liens { display: flex; align-items: center; gap: 36px; border-radius: 60px; border: 1px solid #C2185B;  padding: 10px 30px; }
 
 .lien-nav {
   font-size: 0.83rem;
@@ -259,7 +258,7 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .hero-apropos {
   position: relative;
-  height: 100vh;
+  height: 105vh;
   min-height: 580px;
   display: flex;
   align-items: flex-end;
@@ -277,7 +276,7 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  background: linear-gradient(135deg, #3d1a2e, #1e1410);
+  background: linear-gradient(135deg, #3d1a2e05, #1e141009);
 }
 
 /* Voile sombre + glow rose très subtil */
@@ -285,8 +284,8 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
   position: absolute;
   inset: 0;
   background:
-  radial-gradient(ellipse at 30% 65%, rgba(194, 24, 123, 0.295) 0%, transparent 50%),
-  linear-gradient(to top, rgba(20,10,8,0.94) 0%, rgba(72, 38, 80, 0.473) 45%, rgba(196, 117, 172, 0.37) 100%);
+  radial-gradient(ellipse at 30% 65%, rgba(139, 21, 86, 0.2) 0%, transparent 50%),
+  linear-gradient(to top, rgba(20, 10, 8, 0.21) 0%, rgba(72, 38, 80, 0.07) 45%, rgba(151, 3, 84, 0.23) 100%);
 }
 
 .hero-texte {
@@ -499,11 +498,11 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
 }
 
 .valeur-carte {
-  background-color: #f53c98;
+  background-color: #fffafc;
   border-radius: 16px;
   padding: 32px 24px;
   text-align: center;
-  box-shadow: 0 4px 22px rgba(219, 55, 96, 0.432);
+  box-shadow: 0 4px 22px rgba(255, 95, 135, 0.76);
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
   box-shadow 0.4s ease,
   background-color 0.5s ease;
@@ -520,7 +519,7 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
   font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #f0ece8;
+  color: #fd1f87;
   margin-bottom: 10px;
   transition: color 0.5s ease;
 }
@@ -528,7 +527,7 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .valeur-texte {
   font-size: 0.8rem;
   line-height: 1.68;
-  color: rgba(240,236,232,0.46);
+  color: rgba(2, 2, 2, 0.9);
   transition: color 0.5s ease;
 }
 

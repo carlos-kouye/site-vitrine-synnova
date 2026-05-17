@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mes univers — Synnova TOCLOE." />
+  <title>Mes univers — Synnova TOCLOE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/univers.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-interieur">
+      <a href="index.html" class="navbar-logo">Synnova<span>.</span></a>
+      <ul class="navbar-liens">
+        <li><a href="index.html" class="lien-nav">Accueil</a></li>
+        <li><a href="apropos.html" class="lien-nav">À propos</a></li>
+        <li><a href="univers.html" class="lien-nav actif">Univers</a></li>
+        <li><a href="portfolio.html" class="lien-nav">Portfolio</a></li>
+        <li><a href="contact.html" class="lien-nav">Contact</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="bouton-theme" id="boutonTheme" aria-label="Thème">
+          <i class="fa-solid fa-sun" id="iconeTheme"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="menu-mobile" id="menuMobile">
+      <ul>
+        <li><a href="index.html" class="lien-mobile">Accueil</a></li>
+        <li><a href="apropos.html" class="lien-mobile">À propos</a></li>
+        <li><a href="univers.html" class="lien-mobile">Univers</a></li>
+        <li><a href="portfolio.html" class="lien-mobile">Portfolio</a></li>
+        <li><a href="contact.html" class="lien-mobile">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PARTIE 1 — HERO TITRE -->
+  <section class="hero-univers">
+    <div class="hero-fond">
+      <img src="img/image fond/Design sans titre (3).png" alt="Mes univers" />
+      <div class="hero-voile"></div>
+    </div>
+    <div class="hero-texte reveal">
+      <h1 class="hero-titre">Mes <em>univers</em></h1>
+      <p class="hero-sous-titre">Chaque facette de mon travail</p>
+    </div>
+  </section>
+
+  <!-- PARTIE 2 + 3 — ONGLETS + GALERIE -->
+  <section class="section-univers-contenu">
+
+    <!-- Onglets univers -->
+    <div class="onglets-univers reveal">
+      <button class="onglet actif" data-univers="animation">
+        <i class="fa-solid fa-microphone-lines"></i>
+        <span>Animation & Événements</span>
+      </button>
+      <button class="onglet" data-univers="communication">
+        <i class="fa-solid fa-comments"></i>
+        <span>Communication Digitale</span>
+      </button>
+      <button class="onglet" data-univers="cinema">
+        <i class="fa-solid fa-film"></i>
+        <span>Cinéma & Régie</span>
+      </button>
+      <button class="onglet" data-univers="entrepreneuriat">
+        <i class="fa-solid fa-seedling"></i>
+        <span>Entrepreneuriat Social</span>
+      </button>
+    </div>
+
+    <!-- Texte dynamique par univers -->
+    <div class="univers-description reveal">
+
+      <div class="desc-bloc actif" data-desc="animation">
+        <span class="desc-label">01 — Animation & Événements</span>
+        <h2 class="desc-titre">Je vis sur scène, <em>et ça se sent.</em></h2>
+        <p class="desc-texte">J'aime créer des ambiances vivantes et transformer chaque événement en expérience mémorable. Ma voix et ma présence sont là pour fédérer, surprendre et faire vibrer.</p>
+      </div>
+
+      <div class="desc-bloc" data-desc="communication">
+        <span class="desc-label">02 — Communication Digitale</span>
+        <h2 class="desc-titre">Les mots justes, <em>au bon moment.</em></h2>
+        <p class="desc-texte">J'utilise les mots, les images et le digital pour donner de la visibilité aux idées et aux projets. Chaque message est pensé pour connecter et créer du lien durable.</p>
+      </div>
+
+      <div class="desc-bloc" data-desc="cinema">
+        <span class="desc-label">03 — Cinéma & Régie</span>
+        <h2 class="desc-titre">Entre caméra <em>et émotions.</em></h2>
+        <p class="desc-texte">Le cinéma est devenu pour moi un véritable espace d'expression. Actrice, régisseuse plateau — j'habite chaque rôle avec sincérité et j'aime la puissance d'une histoire bien racontée.</p>
+      </div>
+
+      <div class="desc-bloc" data-desc="entrepreneuriat">
+        <span class="desc-label">04 — Entrepreneuriat Social</span>
+        <h2 class="desc-titre">Créer avec <em>du sens.</em></h2>
+        <p class="desc-texte">Je crée des solutions responsables en mêlant créativité et engagement écologique. Mes emballages biodégradables faits main sont nés d'une conviction profonde.</p>
+      </div>
+
+    </div>
+
+    <!-- Galerie dynamique -->
+    <div class="galerie-univers reveal">
+
+      <!-- Grande image gauche -->
+      <div class="galerie-grande">
+        <img src="images/photo-1.jpg" alt="" id="grandeImage" class="galerie-img-principale" />
+      </div>
+
+      <!-- Grille 2x2 droite -->
+      <div class="galerie-grille-petites">
+        <div class="petite-image">
+          <img src="images/photo-2.jpg" alt="" data-index="0" />
+        </div>
+        <div class="petite-image">
+          <img src="images/photo-3.jpg" alt="" data-index="1" />
+        </div>
+        <div class="petite-image">
+          <img src="images/photo-4.jpg" alt="" data-index="2" />
+        </div>
+        <div class="petite-image">
+          <img src="images/photo-5.jpg" alt="" data-index="3" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PARTIE 4 — Bouton s'abonner -->
+    <div class="zone-abonnement reveal">
+      <p class="abonnement-texte">Suivez mon univers au quotidien</p>
+      <a href="https://instagram.com/_synnova" target="_blank" rel="noopener" class="bouton-abonnement">
+        <i class="fa-brands fa-instagram"></i> S'abonner
+      </a>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-principal">
+    <div class="footer-interieur">
+      <div class="footer-col footer-col-marque">
+        <a href="index.html" class="footer-logo">Synnova<span>.</span></a>
+        <p class="footer-slogan">Une femme en chemin, portée par la création, la parole et l'engagement.</p>
+        <div class="footer-reseaux">
+          <a href="https://facebook.com/synnovalumiere" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://tiktok.com/@_synnova" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://instagram.com/_synnova" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-titre-col">Navigation</h4>
+        <ul class="footer-liste">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="univers.html">Univers</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-titre-col">Univers</h4>
+        <ul class="footer-liste">
+          <li><a href="#">Animation</a></li>
+          <li><a href="#">Communication</a></li>
+          <li><a href="#">Cinéma & Régie</a></li>
+          <li><a href="#">Entrepreneuriat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-titre-col">Contact</h4>
+        <ul class="footer-liste">
+          <li><a href="mailto:contact@synnova.bj"><i class="fa-solid fa-envelope"></i> contact@synnova.bj</a></li>
+          <li><span class="footer-lieu"><i class="fa-solid fa-location-dot"></i> Bénin, Afrique de l'Ouest</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; 2025 Synnova Belvine Kybarance TOCLOE. Tous droits réservés.</p>
+      <p>Fait avec <i class="fa-solid fa-heart"></i> au Bénin</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

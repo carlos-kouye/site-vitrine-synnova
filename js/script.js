@@ -143,3 +143,329 @@ if (elementsReveal.length > 0) {
     observateur.observe(el);
   });
 }
+
+
+// ── UNIVERS — ONGLETS INTERACTIFS ─────────────
+// Données images par univers
+
+var donneesUnivers = {
+  animation: {
+    grande: 'images/photo-1.jpg',
+    petites: ['images/photo-2.jpg', 'images/photo-3.jpg', 'images/photo-4.jpg', 'images/photo-5.jpg']
+  },
+  communication: {
+    grande: 'images/photo-2.jpg',
+    petites: ['images/photo-3.jpg', 'images/photo-4.jpg', 'images/photo-5.jpg', 'images/photo-1.jpg']
+  },
+  cinema: {
+    grande: 'images/photo-3.jpg',
+    petites: ['images/photo-4.jpg', 'images/photo-5.jpg', 'images/photo-1.jpg', 'images/photo-2.jpg']
+  },
+  entrepreneuriat: {
+    grande: 'images/photo-4.jpg',
+    petites: ['images/photo-5.jpg', 'images/photo-1.jpg', 'images/photo-2.jpg', 'images/photo-3.jpg']
+  }
+};
+
+var onglets       = document.querySelectorAll('.onglet');
+var grandeImage   = document.getElementById('grandeImage');
+var petitesImages = document.querySelectorAll('.petite-image img');
+var blocsDesc     = document.querySelectorAll('.desc-bloc');
+
+if (onglets.length > 0) {
+
+  onglets.forEach(function (onglet) {
+    onglet.addEventListener('click', function () {
+      var univers = onglet.getAttribute('data-univers');
+
+      // Mettre à jour onglet actif
+      onglets.forEach(function (o) { o.classList.remove('actif'); });
+      onglet.classList.add('actif');
+
+      // Mettre à jour description
+      blocsDesc.forEach(function (bloc) { bloc.classList.remove('actif'); });
+      var descCible = document.querySelector('.desc-bloc[data-desc="' + univers + '"]');
+      if (descCible) descCible.classList.add('actif');
+
+      // Transition fluide des images
+      var data = donneesUnivers[univers];
+      if (!data) return;
+
+      // Grande image — fade out puis swap
+      if (grandeImage) {
+        grandeImage.classList.add('en-transition');
+        setTimeout(function () {
+          grandeImage.src = data.grande;
+          grandeImage.classList.remove('en-transition');
+        }, 400);
+      }
+
+      // Petites images — fade out puis swap
+      petitesImages.forEach(function (img, i) {
+        img.classList.add('en-transition');
+        setTimeout(function () {
+          img.src = data.petites[i] || data.grande;
+          img.classList.remove('en-transition');
+        }, 400);
+      });
+
+    });
+  });
+
+}
+
+
+// ── PORTFOLIO — FILTRES ────────────────────────
+
+var filtres   = document.querySelectorAll('.filtre');
+var zones     = document.querySelectorAll('.zone-filtre');
+
+if (filtres.length > 0) {
+  filtres.forEach(function (filtre) {
+    filtre.addEventListener('click', function () {
+      var cible = filtre.getAttribute('data-filtre');
+
+      // Mettre à jour filtre actif
+      filtres.forEach(function (f) { f.classList.remove('actif'); });
+      filtre.classList.add('actif');
+
+      // Afficher la bonne zone
+      zones.forEach(function (zone) {
+        zone.classList.remove('actif');
+        if (zone.getAttribute('data-zone') === cible) {
+          zone.classList.add('actif');
+        }
+      });
+    });
+  });
+}
+
+
+// ── CONTACT — FAQ ACCORDÉON ────────────────────
+
+var faqItems = document.querySelectorAll('.faq-item');
+
+if (faqItems.length > 0) {
+  faqItems.forEach(function (item) {
+    var question = item.querySelector('.faq-question');
+    question.addEventListener('click', function () {
+      var estOuvert = item.classList.contains('ouvert');
+
+      // Fermer tous les autres
+      faqItems.forEach(function (i) { i.classList.remove('ouvert'); });
+
+      // Ouvrir celui cliqué si ce n'était pas déjà ouvert
+      if (!estOuvert) {
+        item.classList.add('ouvert');
+        question.setAttribute('aria-expanded', 'true');
+      } else {
+        question.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+}
+
+
+// ── CONTACT — VALIDATION FORMULAIRE ───────────
+
+var formulaire = document.getElementById('formulaireContact');
+
+if (formulaire) {
+
+  // Compteur de caractères du message
+  var textarea        = document.getElementById('message');
+  var compteur        = document.getElementById('compteurCaracteres');
+  var limiteCaracteres = 1000;
+
+  if (textarea && compteur) {
+    textarea.addEventListener('input', function () {
+      var nb = textarea.value.length;
+      compteur.textContent = nb;
+      if (nb > limiteCaracteres) {
+        textarea.value = textarea.value.slice(0, limiteCaracteres);
+        compteur.textContent = limiteCaracteres;
+      }
+    });
+  }
+
+  // Validation en temps réel
+  function validerChamp(champ, erreurId, condition, message) {
+    var erreur = document.getElementById(erreurId);
+    if (!champ || !erreur) return true;
+    if (!condition) {
+      champ.classList.add('invalide');
+      champ.classList.remove('valide');
+      erreur.textContent = message;
+      return false;
+    }
+    champ.classList.remove('invalide');
+    champ.classList.add('valide');
+    erreur.textContent = '';
+    return true;
+  }
+
+  // Validation à la soumission
+  formulaire.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var nom     = document.getElementById('nom');
+    var email   = document.getElementById('email');
+    var sujet   = document.getElementById('sujet');
+    var message = document.getElementById('message');
+
+    var nomOk     = validerChamp(nom,     'erreur-nom',     nom.value.trim().length >= 2,                          'Veuillez entrer votre nom complet.');
+    var emailOk   = validerChamp(email,   'erreur-email',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()), 'Adresse email invalide.');
+    var sujetOk   = validerChamp(sujet,   'erreur-sujet',   sujet.value !== '',                                    'Veuillez choisir un sujet.');
+    var messageOk = validerChamp(message, 'erreur-message',  message.value.trim().length >= 10,                    'Le message doit contenir au moins 10 caractères.');
+
+    if (nomOk && emailOk && sujetOk && messageOk) {
+      // Tout est valide — soumettre le formulaire
+      var bouton = document.getElementById('boutonEnvoyer');
+      if (bouton) {
+        bouton.disabled = true;
+        bouton.querySelector('.bouton-texte').textContent = 'Envoi en cours...';
+      }
+      formulaire.submit();
+    }
+  });
+
+  // Validation au blur (quand on quitte un champ)
+  var champNom     = document.getElementById('nom');
+  var champEmail   = document.getElementById('email');
+  var champSujet   = document.getElementById('sujet');
+  var champMessage = document.getElementById('message');
+
+  if (champNom) {
+    champNom.addEventListener('blur', function () {
+      validerChamp(champNom, 'erreur-nom', champNom.value.trim().length >= 2, 'Veuillez entrer votre nom complet.');
+    });
+  }
+  if (champEmail) {
+    champEmail.addEventListener('blur', function () {
+      validerChamp(champEmail, 'erreur-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(champEmail.value.trim()), 'Adresse email invalide.');
+    });
+  }
+  if (champSujet) {
+    champSujet.addEventListener('blur', function () {
+      validerChamp(champSujet, 'erreur-sujet', champSujet.value !== '', 'Veuillez choisir un sujet.');
+    });
+  }
+  if (champMessage) {
+    champMessage.addEventListener('blur', function () {
+      validerChamp(champMessage, 'erreur-message', champMessage.value.trim().length >= 10, 'Le message doit contenir au moins 10 caractères.');
+    });
+  }
+
+}
+
+
+// ── CONTACT — FAQ ACCORDÉON ────────────────────
+
+var faqItems = document.querySelectorAll('.faq-item');
+
+if (faqItems.length > 0) {
+  faqItems.forEach(function (item) {
+    var question = item.querySelector('.faq-question');
+    question.addEventListener('click', function () {
+      var estOuvert = item.classList.contains('ouvert');
+
+      // Fermer tous les autres
+      faqItems.forEach(function (el) {
+        el.classList.remove('ouvert');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+
+      // Ouvrir celui cliqué si pas déjà ouvert
+      if (!estOuvert) {
+        item.classList.add('ouvert');
+        question.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+
+// ── CONTACT — VALIDATION FORMULAIRE ───────────
+
+var formulaire = document.getElementById('formulaireContact');
+
+if (formulaire) {
+
+  // Compteur de caractères message
+  var textarea    = document.getElementById('message');
+  var compteur    = document.getElementById('compteurCaracteres');
+  var maxCaract   = 1000;
+
+  if (textarea && compteur) {
+    textarea.addEventListener('input', function () {
+      var longueur = textarea.value.length;
+      compteur.textContent = longueur;
+      if (longueur > maxCaract) {
+        textarea.value = textarea.value.substring(0, maxCaract);
+        compteur.textContent = maxCaract;
+      }
+    });
+  }
+
+  // Validation champ par champ
+  function validerChamp(champ) {
+    var erreur = document.getElementById('erreur-' + champ.id);
+    var valeur = champ.value.trim();
+    var ok = true;
+    var message = '';
+
+    if (champ.required && valeur === '') {
+      ok = false;
+      message = 'Ce champ est obligatoire.';
+    } else if (champ.type === 'email' && valeur !== '') {
+      var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!regex.test(valeur)) { ok = false; message = 'Adresse email invalide.'; }
+    } else if (champ.id === 'message' && valeur.length < 10) {
+      ok = false; message = 'Votre message est trop court (min. 10 caractères).';
+    }
+
+    champ.classList.toggle('invalide', !ok);
+    champ.classList.toggle('valide', ok && valeur !== '');
+    if (erreur) erreur.textContent = message;
+    return ok;
+  }
+
+  // Valider au blur
+  ['nom', 'email', 'sujet', 'message'].forEach(function (id) {
+    var champ = document.getElementById(id);
+    if (champ) {
+      champ.addEventListener('blur', function () { validerChamp(champ); });
+      champ.addEventListener('input', function () {
+        if (champ.classList.contains('invalide')) validerChamp(champ);
+      });
+    }
+  });
+
+  // Soumission
+  formulaire.addEventListener('submit', function (e) {
+    var champIds = ['nom', 'email', 'sujet', 'message'];
+    var toutValide = true;
+
+    champIds.forEach(function (id) {
+      var champ = document.getElementById(id);
+      if (champ && !validerChamp(champ)) toutValide = false;
+    });
+
+    if (!toutValide) {
+      e.preventDefault();
+      // Scroller vers la première erreur
+      var premierInvalide = formulaire.querySelector('.invalide');
+      if (premierInvalide) {
+        premierInvalide.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        premierInvalide.focus();
+      }
+    } else {
+      // Désactiver le bouton pendant l'envoi
+      var bouton = document.getElementById('boutonEnvoyer');
+      if (bouton) {
+        bouton.disabled = true;
+        bouton.querySelector('.bouton-texte').textContent = 'Envoi en cours...';
+      }
+    }
+  });
+}

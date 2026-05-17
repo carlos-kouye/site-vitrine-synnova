@@ -29,38 +29,38 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* Navbar */
 .navbar {
-  background-color: rgba(73, 25, 61, 0.56);
-  border-bottom: 1px solid rgba(194, 24, 91, 0.12);
+  background-color: rgba(253, 248, 253, 0.979);
+  border-bottom: 1px solid rgba(228, 18, 102, 0.41);
 }
-.navbar-logo { color: #f0ece8; }
-.lien-nav { color: rgba(240, 236, 232, 0.58); }
+.navbar-logo { color: #050505; }
+.lien-nav { color: #050505; }
 .lien-nav:hover, .lien-nav.actif { color: #C2185B; }
-.bouton-theme { background-color: rgba(194, 24, 91, 0.12); color: #F8BBD0; }
-.hamburger span { background-color: #f0ece8; }
+.bouton-theme { background-color: rgba(80, 4, 33, 0.9); color: #fcebf1e8; }
+.hamburger span { background-color: #ce0c6d; }
 .menu-mobile { background-color: #88054da6; border-top-color: rgba(194, 24, 91, 0.1); }
 .lien-mobile { color: #fff6fb; }
 
 /* Hero */
 .hero-accueil {
-  background: radial-gradient(ellipse at 60% 50%, #772b56 0.5%, rgb(95, 58, 70) 40%, #471443 100%);
+  background: radial-gradient(ellipse at 60% 50%, #b34472 0.3%, rgb(148, 18, 59) 40%, #630b3b 100%);
 }
-.carte-metiers {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(194, 24, 91, 0.22);
-  color: rgba(240, 236, 232, 0.68);
+/*.carte-metiers {
+  background-color: rgba(196, 26, 94, 0.76);
+  border-color: rgba(247, 155, 192, 0.918);
+  color: rgb(255, 255, 255);
 }
 .nom-synnova { color: #f5eef2; }
-.hero-citation { color: rgba(240, 236, 232, 0.52); border-left-color: rgba(194, 24, 91, 0.45); }
-.bouton-discret { color: rgba(240, 236, 232, 0.6); border-color: rgba(240, 236, 232, 0.16); }
-.bouton-discret:hover { color: #F8BBD0; border-color: #F8BBD0; }
+.hero-citation { color: rgb(255, 255, 255);}
+.bouton-discret { color: rgb(255, 255, 255); }
+.bouton-discret:hover { color: #f74885; }
 .hero-image-decor { border-color: rgba(194, 24, 91, 0.18); }
-.scroll-fleche { border-color: rgba(194, 24, 91, 0.4); }
+.scroll-fleche { border-color: rgba(194, 24, 91, 0.4); }*/
 
 /* Sections */
-.section-univers  { background: radial-gradient(ellipse at center, #42222ee7 0.1%, #240517 70%); }
-.section-bio      { background: radial-gradient(ellipse at center, #42222ee7 0.1%, #240517 70%); }
-.section-moments  { background: radial-gradient(ellipse at center, #42222ee7 0.1%, #240517 70%); }
-.section-galerie  { background-color: #240517; }
+.section-univers  { background: radial-gradient(ellipse at center, #42222ee7 0.1%, #5f063d 70%); }
+.section-bio      { background: radial-gradient(ellipse at center, #42222ee7 0.1%, #5f063d 70%); }
+.section-moments  { background: radial-gradient(ellipse at center, #42222ee7 0.1%, #5f063d 70%); }
+.section-galerie  { background-color: #410929; }
 
 .titre-section { color: #f0ece8; }
 .sous-titre { color: rgba(240, 236, 232, 0.42); }
@@ -101,29 +101,29 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
 /* ── 3. THÈME CLAIR ───────────────────────────── */
 
 [data-theme="light"] body {
-  background-color: #f094f3f5;
-  color: #2a2a2a;
+  background-color: #f6c0f8f5;
+  color: #0f0f0f;
 }
 
 /* Navbar claire */
-[data-theme="light"] .navbar { background-color: rgba(245, 91, 181, 0.78); border-bottom-color: rgba(194,24,91,0.07); }
-[data-theme="light"] .navbar-logo { color: #1a1a1a; }
-[data-theme="light"] .lien-nav { color: rgba(26,26,26,0.6); }
-[data-theme="light"] .lien-nav:hover, [data-theme="light"] .lien-nav.actif { color: #C2185B; }
-[data-theme="light"] .bouton-theme { background-color: rgba(194,24,91,0.07); color: #C2185B; }
+[data-theme="light"] .navbar { background-color: rgba(44, 1, 26, 0.925); border-bottom-color: rgba(248, 214, 228, 0.57); }
+[data-theme="light"] .navbar-logo { color: #fffefe; }
+[data-theme="light"] .lien-nav { color: rgb(255, 255, 255); }
+[data-theme="light"] .lien-nav:hover, [data-theme="light"] .lien-nav.actif { color: #eb327c; }
+[data-theme="light"] .bouton-theme { background-color: rgba(255, 235, 243, 0.54); color: #310115; }
 [data-theme="light"] .hamburger span { background-color: #1a1a1a; }
 [data-theme="light"] .menu-mobile { background-color: #FAFAFA; border-top-color: rgba(194,24,91,0.07); }
 [data-theme="light"] .lien-mobile { color: #1a1a1a; }
 
-/* Hero clair */
-[data-theme="light"] .hero-accueil { background: radial-gradient(ellipse at center, #f899b5c7 3%, #f4a4f7 65%); }
-[data-theme="light"] .carte-metiers { background-color: #f7dff5; border-color: rgba(194,24,91,0.13); color: rgba(26,26,26,0.62); }
-[data-theme="light"] .nom-synnova { color: #da049a; }
-[data-theme="light"] .hero-citation { color: rgba(26,26,26,0.55); border-left-color: #F8BBD0; }
-[data-theme="light"] .bouton-discret { color: rgba(26,26,26,0.6); border-color: rgba(26,26,26,0.18); }
-[data-theme="light"] .bouton-discret:hover { color: #C2185B; border-color: #C2185B; }
+/* Hero clair 
+[data-theme="light"] .hero-accueil { background: radial-gradient(ellipse at center, #ee90acc7 1%, #700738 65%); }*/
+[data-theme="light"] .carte-metiers { background-color: #ffffff; border-color: rgba(236, 12, 102, 0.88); color: rgba(0, 0, 0, 0.62); }
+[data-theme="light"] .nom-synnova { color: #ff6dc7; }
+[data-theme="light"] .hero-citation { color: rgb(255, 255, 255); }
+[data-theme="light"] .bouton-discret { color: rgb(253, 251, 251); border-color: rgba(26,26,26,0.18); }
+[data-theme="light"] .bouton-discret:hover { color: #ffafcf; border-color: #C2185B; }
 [data-theme="light"] .hero-image-decor { border-color: rgba(194,24,91,0.12); }
-[data-theme="light"] .scroll-fleche { border-color: rgba(194,24,91,0.35); }
+[data-theme="light"] .scroll-fleche { border-color: rgba(255, 255, 255, 0.93); }
 
 /* Sections claires */
 [data-theme="light"] .section-univers  { background: radial-gradient(ellipse at center, #fff0f4 0%, #FAFAFA 68%); }
@@ -257,12 +257,10 @@ border-color 0.5s ease, box-shadow 0.5s ease;
   display: inline-flex;
   align-items: center;
   padding: 14px 32px;
-  border: 1.5px solid rgba(240, 236, 232, 0.16);
-  border-radius: 50px;
   font-family: 'Poppins', sans-serif;
   font-size: 0.87rem;
   font-weight: 400;
-  color: rgba(240, 236, 232, 0.6);
+  color: rgb(240, 236, 232);
   transition: border-color 0.3s ease, color 0.3s ease;
 }
 
@@ -298,7 +296,7 @@ border-color 0.5s ease, box-shadow 0.5s ease;
 }
 .navbar-logo span { color: #C2185B; }
 
-.navbar-liens { display: flex; align-items: center; gap: 36px; }
+.navbar-liens { display: flex; align-items: center; gap: 36px; border-radius: 60px; border: 2px solid #C2185B;  padding: 10px 30px; }
 
 .lien-nav {
   font-size: 0.83rem;
@@ -357,7 +355,8 @@ border-color 0.5s ease, box-shadow 0.5s ease;
 
 .hero-contenu {
   max-width: 1280px;
-  margin: 0 auto;
+  margin-bottom: -17.6%;
+  margin-top: -5%;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -371,17 +370,19 @@ border-color 0.5s ease, box-shadow 0.5s ease;
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 12px;
-  padding: 11px 20px;
+  gap: 8px 10px;
+  padding: 3px 20px;
+  margin-top: -10%;
   border: 1px solid;
   border-radius: 50px;
-  box-shadow: 0 2px 14px rgba(194, 24, 91, 0.06);
+  background-color: #ffffff; border-color: rgba(236, 12, 102, 0.88); color: rgba(0, 0, 0, 0.62);
+  box-shadow: 0 2px 14px rgba(235, 58, 146, 0.62);
   font-size: 0.73rem;
   font-weight: 500;
   letter-spacing: 0.05em;
   width: fit-content;
 }
-.separateur-metier { color: #C2185B; }
+.separateur-metier { color: #fde6f0; font-size: 25px; padding: -35px;}
 
 .nom-synnova {
   font-family: 'Playfair Display', serif;
@@ -389,12 +390,13 @@ border-color 0.5s ease, box-shadow 0.5s ease;
   font-weight: 700;
   line-height: 1.25;
   min-height: 4rem;
-  color: #f05e98;
+  color: #f790c3;
+  margin-top: 10PX;
 }
 
 .curseur-clignotant {
   display: inline-block;
-  color: #C2185B;
+  color: #ffffff;
   font-weight: 300;
   margin-left: 2px;
   animation: clignoter 1s step-end infinite;
@@ -406,8 +408,6 @@ border-color 0.5s ease, box-shadow 0.5s ease;
   font-style: italic;
   font-size: clamp(0.92rem, 1.3vw, 1.05rem);
   line-height: 1.78;
-  border-left: 2px solid;
-  padding-left: 16px;
   max-width: 460px;
 }
 
@@ -417,19 +417,22 @@ border-color 0.5s ease, box-shadow 0.5s ease;
 
 .hero-image-cadre { 
   position: relative; 
-  width: 100%;
-  max-width: 310px;
-  border: 1.5px solid #C2185B;
-  border-radius: 20px 0px 20px 0;
+  width: 150%;
+  height: 150%;
+  max-width: 280px;
+  /*border: 1.5px solid #C2185B;
+  border-radius: 20px 0px 20px 0;*/
 }
 
 .hero-photo {
-  width: 100%;
+  width: 120%;
+  height: 110%;
+  margin-bottom: 50px;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
-  border-radius: 20px 0px 20px 0px;
-  border: 1.5px solid #C2185B;
+  /*border-radius: 20px 0px 20px 0px;
+  border: 1.5px solid #C2185B;*/
 }
 
 
@@ -520,7 +523,7 @@ border-color 0.5s ease, box-shadow 0.5s ease;
 
 /* ── 11. MOMENTS FORTS ────────────────────────── */
 
-.section-moments { padding: 96px 40px; transition: background 0.5s ease; }
+.section-moments { padding: 95px 40px; transition: background 0.5s ease; }
 
 .moments-grille {
   display: grid;
@@ -538,7 +541,7 @@ border-color 0.5s ease, box-shadow 0.5s ease;
 }
 .moment-carte:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 14px 36px rgba(194, 24, 91, 0.16); }
 
-.moment-image { height: 185px; overflow: hidden; position: relative; }
+.moment-image { height: 215px; overflow: hidden; position: relative; }
 .moment-image img { transition: transform 0.5s ease; }
 .moment-carte:hover .moment-image img { transform: scale(1.08); }
 
@@ -685,18 +688,27 @@ border-color 0.5s ease, box-shadow 0.5s ease;
 @media (max-width: 1024px) {
   .hero-contenu { grid-template-columns: 1fr; gap: 50px; text-align: center; }
   .hero-gauche { align-items: center; }
-  .carte-metiers { justify-content: center; font-size: 8px;}
-  .hero-citation { border-left: none; padding-left: 0; padding-top: 14px; text-align: center; }
+  .carte-metiers { justify-content: center; font-size: 8px; gap: 8px 10px;
+  padding: 3px 10px;}
+  .hero-citation { border-left: none; padding-left: 0; padding-top: -4px; text-align: center; }
   .hero-boutons { justify-content: center; }
   .hero-droite { order: -2; }
   .hero-image-cadre { 
-  width: 280px; 
-  height: 280px;
-  margin: 0 auto; 
+  width: 210px; 
+  height: 210px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   border:1px solid #C2185B ;
-  border-radius: 50%; 
+  border-radius: 90%; 
   overflow: hidden;
   box-shadow: 0 0 20px rgba(214, 80, 255, 0.8), 0 0 40px rgba(248, 98, 185, 0.884);
+  }
+  .nom-synnova{
+    margin-bottom: -30px;
+    font-size: 20px;
+  }
+  .scroll-indicateur{
+    Display: none;
   }
   .univers-grille { grid-template-columns: repeat(2, 1fr); }
   .bio-interieur { grid-template-columns: 1fr; gap: 36px; }
@@ -723,7 +735,7 @@ border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 @media (max-width: 375px) {
-  .hero-boutons { flex-direction: column; align-items: center; width: 100%; }
+  .hero-boutons { flex-direction: column; align-items: center; width: 80%; }
   .bouton-rose, .bouton-discret { width: 100%; justify-content: center; }
   .cta-titre { font-size: 1.7rem; }
 }
