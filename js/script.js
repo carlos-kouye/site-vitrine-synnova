@@ -243,146 +243,31 @@ if (filtres.length > 0) {
 
 // ── CONTACT — FAQ ACCORDÉON ────────────────────
 
-var faqItems = document.querySelectorAll('.faq-item');
+document.addEventListener('DOMContentLoaded', function () {
+  var faqItems = document.querySelectorAll('.faq-item');
 
-if (faqItems.length > 0) {
   faqItems.forEach(function (item) {
     var question = item.querySelector('.faq-question');
+    if (!question) return;
+
     question.addEventListener('click', function () {
       var estOuvert = item.classList.contains('ouvert');
 
-      // Fermer tous les autres
-      faqItems.forEach(function (i) { i.classList.remove('ouvert'); });
-
-      // Ouvrir celui cliqué si ce n'était pas déjà ouvert
-      if (!estOuvert) {
-        item.classList.add('ouvert');
-        question.setAttribute('aria-expanded', 'true');
-      } else {
-        question.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });
-}
-
-
-// ── CONTACT — VALIDATION FORMULAIRE ───────────
-
-var formulaire = document.getElementById('formulaireContact');
-
-if (formulaire) {
-
-  // Compteur de caractères du message
-  var textarea        = document.getElementById('message');
-  var compteur        = document.getElementById('compteurCaracteres');
-  var limiteCaracteres = 1000;
-
-  if (textarea && compteur) {
-    textarea.addEventListener('input', function () {
-      var nb = textarea.value.length;
-      compteur.textContent = nb;
-      if (nb > limiteCaracteres) {
-        textarea.value = textarea.value.slice(0, limiteCaracteres);
-        compteur.textContent = limiteCaracteres;
-      }
-    });
-  }
-
-  // Validation en temps réel
-  function validerChamp(champ, erreurId, condition, message) {
-    var erreur = document.getElementById(erreurId);
-    if (!champ || !erreur) return true;
-    if (!condition) {
-      champ.classList.add('invalide');
-      champ.classList.remove('valide');
-      erreur.textContent = message;
-      return false;
-    }
-    champ.classList.remove('invalide');
-    champ.classList.add('valide');
-    erreur.textContent = '';
-    return true;
-  }
-
-  // Validation à la soumission
-  formulaire.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    var nom     = document.getElementById('nom');
-    var email   = document.getElementById('email');
-    var sujet   = document.getElementById('sujet');
-    var message = document.getElementById('message');
-
-    var nomOk     = validerChamp(nom,     'erreur-nom',     nom.value.trim().length >= 2,                          'Veuillez entrer votre nom complet.');
-    var emailOk   = validerChamp(email,   'erreur-email',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()), 'Adresse email invalide.');
-    var sujetOk   = validerChamp(sujet,   'erreur-sujet',   sujet.value !== '',                                    'Veuillez choisir un sujet.');
-    var messageOk = validerChamp(message, 'erreur-message',  message.value.trim().length >= 10,                    'Le message doit contenir au moins 10 caractères.');
-
-    if (nomOk && emailOk && sujetOk && messageOk) {
-      // Tout est valide — soumettre le formulaire
-      var bouton = document.getElementById('boutonEnvoyer');
-      if (bouton) {
-        bouton.disabled = true;
-        bouton.querySelector('.bouton-texte').textContent = 'Envoi en cours...';
-      }
-      formulaire.submit();
-    }
-  });
-
-  // Validation au blur (quand on quitte un champ)
-  var champNom     = document.getElementById('nom');
-  var champEmail   = document.getElementById('email');
-  var champSujet   = document.getElementById('sujet');
-  var champMessage = document.getElementById('message');
-
-  if (champNom) {
-    champNom.addEventListener('blur', function () {
-      validerChamp(champNom, 'erreur-nom', champNom.value.trim().length >= 2, 'Veuillez entrer votre nom complet.');
-    });
-  }
-  if (champEmail) {
-    champEmail.addEventListener('blur', function () {
-      validerChamp(champEmail, 'erreur-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(champEmail.value.trim()), 'Adresse email invalide.');
-    });
-  }
-  if (champSujet) {
-    champSujet.addEventListener('blur', function () {
-      validerChamp(champSujet, 'erreur-sujet', champSujet.value !== '', 'Veuillez choisir un sujet.');
-    });
-  }
-  if (champMessage) {
-    champMessage.addEventListener('blur', function () {
-      validerChamp(champMessage, 'erreur-message', champMessage.value.trim().length >= 10, 'Le message doit contenir au moins 10 caractères.');
-    });
-  }
-
-}
-
-
-// ── CONTACT — FAQ ACCORDÉON ────────────────────
-
-var faqItems = document.querySelectorAll('.faq-item');
-
-if (faqItems.length > 0) {
-  faqItems.forEach(function (item) {
-    var question = item.querySelector('.faq-question');
-    question.addEventListener('click', function () {
-      var estOuvert = item.classList.contains('ouvert');
-
-      // Fermer tous les autres
+      // Fermer tous
       faqItems.forEach(function (el) {
         el.classList.remove('ouvert');
-        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        var q = el.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'false');
       });
 
-      // Ouvrir celui cliqué si pas déjà ouvert
+      // Ouvrir si pas déjà ouvert
       if (!estOuvert) {
         item.classList.add('ouvert');
         question.setAttribute('aria-expanded', 'true');
       }
     });
   });
-}
+});
 
 
 // ── CONTACT — VALIDATION FORMULAIRE ───────────
@@ -470,55 +355,218 @@ if (formulaire) {
   });
 }
 
-/* ════════════════════════════════════════════════
-   CONTACT — ENVOI EMAILJS
-════════════════════════════════════════════════ */
 
-(function() {
-  const form = document.getElementById('formulaireContact');
-  if (!form) return;
+// ── CONFIRMATION — Affichage selon ?success= ──
 
-  const SERVICE_ID = 'service_8lceohj';
-  const TEMPLATE_ID = 'template_7ozgy7g';
+var carteConfirmation = document.getElementById('carteConfirmation');
 
-  form.addEventListener('submit', function(e) {
+if (carteConfirmation) {
+  var params  = new URLSearchParams(window.location.search);
+  var success = params.get('success');
+
+  if (success === '1') {
+    carteConfirmation.innerHTML = `
+      <div class="confirmation-icone succes"><i class="fa-solid fa-check"></i></div>
+      <h1 class="confirmation-titre">Message envoyé !</h1>
+      <p class="confirmation-texte">Votre message a bien été reçu.<br />Synnova vous répondra dans les plus brefs délais.</p>
+      <div class="confirmation-boutons">
+        <a href="index.html" class="bouton-principal-conf"><i class="fa-solid fa-house"></i> Retour à l'accueil</a>
+        <a href="https://wa.me/229XXXXXXXX" target="_blank" rel="noopener" class="bouton-whatsapp-conf"><i class="fa-brands fa-whatsapp"></i> Continuer sur WhatsApp</a>
+      </div>`;
+  } else if (success === '0') {
+    carteConfirmation.innerHTML = `
+      <div class="confirmation-icone erreur"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <h1 class="confirmation-titre">Une erreur est survenue</h1>
+      <p class="confirmation-texte">Votre message n'a pas pu être envoyé.<br />Veuillez réessayer ou me contacter directement.</p>
+      <div class="confirmation-boutons">
+        <a href="contact.html" class="bouton-principal-conf"><i class="fa-solid fa-arrow-left"></i> Retour au formulaire</a>
+        <a href="https://wa.me/229XXXXXXXX" target="_blank" rel="noopener" class="bouton-whatsapp-conf"><i class="fa-brands fa-whatsapp"></i> Me contacter sur WhatsApp</a>
+      </div>`;
+  } else {
+    carteConfirmation.innerHTML = `
+      <div class="confirmation-icone succes"><i class="fa-solid fa-envelope"></i></div>
+      <h1 class="confirmation-titre">Page de confirmation</h1>
+      <p class="confirmation-texte">Cette page s'affiche après l'envoi d'un message.<br />Souhaitez-vous m'envoyer un message ?</p>
+      <div class="confirmation-boutons">
+        <a href="contact.html" class="bouton-principal-conf"><i class="fa-solid fa-paper-plane"></i> Accéder au formulaire</a>
+        <a href="index.html" class="bouton-secondaire-conf"><i class="fa-solid fa-house"></i> Retour à l'accueil</a>
+      </div>`;
+  }
+}
+
+
+// ── CONFIRMATION — AFFICHAGE SELON URL ────────
+
+document.addEventListener('DOMContentLoaded', function () {
+  var carte = document.getElementById('carteConfirmation');
+  if (!carte) return;
+
+  var params = new URLSearchParams(window.location.search);
+  var success = params.get('success');
+
+  var html = '';
+
+  if (success === '1') {
+    html = '<div class="confirmation-icone succes"><i class="fa-solid fa-check"></i></div>'
+      + '<h1 class="confirmation-titre">Message envoyé !</h1>'
+      + '<p class="confirmation-texte">Votre message a bien été reçu.<br />Synnova vous répondra dans les plus brefs délais.</p>'
+      + '<div class="confirmation-boutons">'
+      + '<a href="index.html" class="bouton-principal-conf"><i class="fa-solid fa-house"></i> Retour à l\'accueil</a>'
+      + '<a href="https://wa.me/229XXXXXXXX" target="_blank" rel="noopener" class="bouton-whatsapp-conf"><i class="fa-brands fa-whatsapp"></i> Continuer sur WhatsApp</a>'
+      + '</div>';
+  } else if (success === '0') {
+    html = '<div class="confirmation-icone erreur"><i class="fa-solid fa-triangle-exclamation"></i></div>'
+      + '<h1 class="confirmation-titre">Une erreur est survenue</h1>'
+      + '<p class="confirmation-texte">Votre message n\'a pas pu être envoyé.<br />Veuillez réessayer ou me contacter directement.</p>'
+      + '<div class="confirmation-boutons">'
+      + '<a href="contact.html" class="bouton-principal-conf"><i class="fa-solid fa-arrow-left"></i> Retour au formulaire</a>'
+      + '<a href="https://wa.me/229XXXXXXXX" target="_blank" rel="noopener" class="bouton-whatsapp-conf"><i class="fa-brands fa-whatsapp"></i> Me contacter sur WhatsApp</a>'
+      + '</div>';
+  } else {
+    html = '<div class="confirmation-icone succes"><i class="fa-solid fa-envelope"></i></div>'
+      + '<h1 class="confirmation-titre">Contactez-moi</h1>'
+      + '<p class="confirmation-texte">Souhaitez-vous m\'envoyer un message ?</p>'
+      + '<div class="confirmation-boutons">'
+      + '<a href="contact.html" class="bouton-principal-conf"><i class="fa-solid fa-paper-plane"></i> Accéder au formulaire</a>'
+      + '<a href="index.html" class="bouton-secondaire-conf"><i class="fa-solid fa-house"></i> Retour à l\'accueil</a>'
+      + '</div>';
+  }
+
+  carte.innerHTML = html;
+  carte.classList.add('visible');
+});
+
+
+// ── EMAILJS — FORMULAIRE CONTACT ──────────────
+
+(function () {
+
+  // Initialiser EmailJS avec la Public Key
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init('F8mtyYpA0xkaX6hnz');
+  }
+
+  var formulaire      = document.getElementById('formulaireContact');
+  var boutonEnvoyer   = document.getElementById('boutonEnvoyer');
+  var formSucces      = document.getElementById('formSucces');
+  var formErreur      = document.getElementById('formErreurGlobal');
+  var boutonNouveau   = document.getElementById('boutonNouveauMessage');
+  var textarea        = document.getElementById('message');
+  var compteur        = document.getElementById('compteurCaracteres');
+
+  if (!formulaire) return;
+
+  // Compteur de caractères
+  if (textarea && compteur) {
+    textarea.addEventListener('input', function () {
+      var longueur = textarea.value.length;
+      if (longueur > 1000) {
+        textarea.value = textarea.value.substring(0, 1000);
+        longueur = 1000;
+      }
+      compteur.textContent = longueur;
+    });
+  }
+
+  // Validation d'un champ
+  function validerChamp(champ) {
+    var erreurEl = document.getElementById('erreur-' + champ.id);
+    var valeur   = champ.value.trim();
+    var ok       = true;
+    var msg      = '';
+
+    if (champ.required && valeur === '') {
+      ok = false; msg = 'Ce champ est obligatoire.';
+    } else if (champ.type === 'email' && valeur !== '') {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valeur)) {
+        ok = false; msg = 'Adresse email invalide.';
+      }
+    } else if (champ.id === 'message' && valeur.length < 10) {
+      ok = false; msg = 'Message trop court (min. 10 caractères).';
+    }
+
+    champ.classList.toggle('invalide', !ok);
+    champ.classList.toggle('valide', ok && valeur !== '');
+    if (erreurEl) erreurEl.textContent = msg;
+    return ok;
+  }
+
+  // Validation au blur et à l'input
+  ['nom', 'email', 'sujet', 'message'].forEach(function (id) {
+    var champ = document.getElementById(id);
+    if (!champ) return;
+    champ.addEventListener('blur', function () { validerChamp(champ); });
+    champ.addEventListener('input', function () {
+      if (champ.classList.contains('invalide')) validerChamp(champ);
+    });
+  });
+
+  // Soumission du formulaire
+  formulaire.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const nom = document.getElementById('nom')?.value.trim();
-    const email = document.getElementById('email')?.value.trim();
-    const sujetSelect = document.getElementById('sujet');
-    const sujet = sujetSelect?.options[sujetSelect.selectedIndex]?.text || '';
-    const message = document.getElementById('message')?.value.trim();
+    // Honeypot — si rempli c'est un bot
+    var honeypot = formulaire.querySelector('[name="site_web"]');
+    if (honeypot && honeypot.value !== '') return;
 
-    if (!nom || !email || !sujet || !message) {
-      alert('Veuillez remplir tous les champs.');
+    // Valider tous les champs
+    var toutValide = true;
+    ['nom', 'email', 'sujet', 'message'].forEach(function (id) {
+      var champ = document.getElementById(id);
+      if (champ && !validerChamp(champ)) toutValide = false;
+    });
+
+    if (!toutValide) {
+      var premier = formulaire.querySelector('.invalide');
+      if (premier) { premier.scrollIntoView({ behavior: 'smooth', block: 'center' }); premier.focus(); }
       return;
     }
 
-    const bouton = document.getElementById('boutonEnvoyer');
-    const originalText = bouton?.querySelector('.bouton-texte')?.innerHTML || 'Envoyer';
-    if (bouton) {
-      bouton.disabled = true;
-      const span = bouton.querySelector('.bouton-texte');
-      if (span) span.innerHTML = 'Envoi en cours...';
-    }
+    // Cacher erreur globale
+    formErreur.classList.remove('visible');
 
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-      from_name: nom,
-      from_email: email,
-      subject: sujet,
-      message: message,
-      to_name: 'Synnova'
-    }).then(() => {
-      window.location.href = 'confirmation.html?success=1';
-    }).catch((error) => {
-      console.error(error);
-      if (bouton) {
-        bouton.disabled = false;
-        const span = bouton.querySelector('.bouton-texte');
-        if (span) span.innerHTML = originalText;
-      }
-      alert('❌ Erreur lors de l\'envoi. Veuillez réessayer.');
-    });
+    // Désactiver bouton + texte chargement
+    boutonEnvoyer.disabled = true;
+    boutonEnvoyer.querySelector('.bouton-texte').textContent = 'Envoi en cours...';
+
+    // Paramètres à envoyer à EmailJS — doivent correspondre aux variables du template
+    var parametres = {
+      nom:     document.getElementById('nom').value.trim(),
+      email:   document.getElementById('email').value.trim(),
+      sujet:   document.getElementById('sujet').value,
+      message: document.getElementById('message').value.trim()
+    };
+
+    // Envoyer via EmailJS
+    emailjs.send('service_8lceohj', 'template_7ozgy7g', parametres)
+      .then(function () {
+        // Succès — cacher formulaire, afficher message succès
+        formulaire.style.display = 'none';
+        formSucces.classList.add('visible');
+        formulaire.reset();
+        if (compteur) compteur.textContent = '0';
+        // Réinitialiser les classes valide
+        ['nom', 'email', 'sujet', 'message'].forEach(function (id) {
+          var c = document.getElementById(id);
+          if (c) { c.classList.remove('valide', 'invalide'); }
+        });
+      })
+      .catch(function () {
+        // Erreur — afficher message erreur
+        formErreur.classList.add('visible');
+        boutonEnvoyer.disabled = false;
+        boutonEnvoyer.querySelector('.bouton-texte').textContent = 'Envoyer le message';
+      });
   });
+
+  // Bouton "Envoyer un autre message"
+  if (boutonNouveau) {
+    boutonNouveau.addEventListener('click', function () {
+      formSucces.classList.remove('visible');
+      formulaire.style.display = 'flex';
+      boutonEnvoyer.disabled = false;
+      boutonEnvoyer.querySelector('.bouton-texte').textContent = 'Envoyer le message';
+    });
+  }
+
 })();
